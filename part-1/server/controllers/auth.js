@@ -4,21 +4,27 @@ const users = []
 
 module.exports = {
     login: (req, res) => {
-      console.log('Logging In User')
-      console.log(req.body)
       const { username, password } = req.body
+      
+      // console.log('Logging In User')
+      // console.log(req.body)
       for (let i = 0; i < users.length; i++) {
         const existing = bcrypt.compareSync(password, users[i].passHash)
+        console.log('hit for loop')
         if (users[i].username === username && existing) {
-          console.log('existing', users)
+          console.log('passed for loop')
           let messagesToReturn = {...users[i]}
-                delete messagesToReturn.passHash
+                delete messagesToReturn.password
           res.status(200).send(messagesToReturn)
+          return
         }
       }
       res.status(400).send("User not found.")
 
     },
+    
+    
+    
     register: (req, res) => {
       const {username,email,firstName,lastName,password} = req.body
       const salt = bcrypt.genSaltSync(5)
