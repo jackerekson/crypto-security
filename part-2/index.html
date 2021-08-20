@@ -4,16 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Cypher</title>
 </head>
 <body>
+    <header>
+            <li class="crumb"><a href="./decode.html">Decode A Message!</a></li>
+    </header>
     <h2 class="title">What would you like to encode?</h2>
-    <section id="secret_message_container">
-        <form id="secret_message_form">
-            <input id="secret_message_input" type="text" placeholder="Enter your message">
-            <button>Cast: Black Magic!</button>
-        </form>
-    </section>
+    <div .main_body>
+        <section id="secret_message_container">
+            <form id="secret_message_form">
+                <input type="text" id="secret_message_input" placeholder="Enter your message">
+                <button>Cast: Black Magic!</button>           
+            </form>
+        </section>
+    </div>
     <script src='cypher.js'></script>
 </body>
 </html>

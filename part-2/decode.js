@@ -1,6 +1,5 @@
-const secretMessagesContainer = document.querySelector('#secret_message_container')
-const secretMessageForm = document.querySelector('#secret_message_form')
-
+const codedMessagesContainer = document.querySelector('section')
+const codedMessageForm = document.querySelector('form')
 
 const map = {
     a: "g",
@@ -32,26 +31,16 @@ const map = {
     " ": 'n'
 };
 
-let cypher = (key, message) => {
-    let encrypt = ''
+let decypher = (key, message) => {
+    let decrypt = ''
     for(let i=0;i<message.length;i++){
         for(let prop in key){
-            if(message[i]===prop){
-                encrypt += key[prop]
+            if(message[i]===key[prop]){
+                decrypt += prop
             }
         }
     }
-    return encrypt
-}
-
-const encode = e => {
-    e.preventDefault()
-    
-    let secretMessage = document.querySelector('#secret_message_input')
-    secretMessage = secretMessage.value
-    const shhh = cypher(map, secretMessage)
-    addCypher(shhh)
-    secretMessage.value = ''
+    return decrypt
 }
 
 const decode = e => {
@@ -65,13 +54,14 @@ const decode = e => {
 }
 
 
-const addCypher = data => {
+const createCypher = data => {
     const cypherCard = document.createElement('div')
     cypherCard.classList.add('cypher-card')
 
     cypherCard.innerHTML = `<p class="message">${data}</p>`
 
 
-    secretMessagesContainer.appendChild(cypherCard)
+    codedMessagesContainer.appendChild(cypherCard)
 }
-    secretMessageForm.addEventListener('submit', encode)
+console.log(codedMessagesContainer)
+    codedMessageForm.addEventListener('submit', decode)
